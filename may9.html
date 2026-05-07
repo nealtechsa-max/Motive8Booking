@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Most Incredible Mom — May 9</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .mom-hero {
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(201, 123, 138, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(245, 214, 220, 0.35) 0%, transparent 55%);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 3px 12px var(--shadow);
+    }
+
+    .stat-card .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--deep-rose);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    .mom-moment {
+      background: white;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      border-left: 4px solid var(--rose);
+      box-shadow: 0 4px 18px var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .mom-moment .mm-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .mom-moment h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--deep-rose);
+      margin-bottom: 0.75rem;
+    }
+
+    .mom-moment p {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .reasons-list {
+      counter-reset: reasons;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .reasons-list li {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem 1.25rem 4.5rem;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 2px 10px var(--shadow);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--charcoal);
+      position: relative;
+      counter-increment: reasons;
+    }
+
+    .reasons-list li::before {
+      content: counter(reasons, decimal-leading-zero);
+      position: absolute;
+      left: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--blush);
+      font-weight: 700;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .split-section { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+
+    .split-photo {
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .split-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .to-the-kids {
+      background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose) 100%);
+      color: white;
+      border-radius: 1.5rem;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(142, 58, 74, 0.3);
+      margin: 3rem 0;
+    }
+
+    .to-the-kids h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: white;
+      margin-bottom: 1.25rem;
+    }
+
+    .to-the-kids p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.88);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .to-the-kids p + p { margin-top: 1rem; }
+
+    .crown-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .promise-card {
+      background: linear-gradient(145deg, white, var(--cream));
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 3px 14px var(--shadow);
+    }
+
+    .promise-card .p-icon { font-size: 1.75rem; display: block; margin-bottom: 0.75rem; }
+    .promise-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--deep-rose);
+      margin-bottom: 0.4rem;
+    }
+    .promise-card p { font-size: 0.85rem; color: var(--muted); margin: 0; line-height: 1.65; }
+
+    .big-mom-quote {
+      background: var(--cream);
+      border: 1px solid var(--gold-light);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .big-mom-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      color: var(--deep-rose);
+      line-height: 1.5;
+      margin: 0 0 1rem;
+    }
+
+    .big-mom-quote cite {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" id="siteNav"></nav>
+  <div id="petals"></div>
+  <div id="pageContent"></div>
+
+  <script>
+    const PAGE_DATE = { year: 2026, month: 5, day: 9 };
+    const UNLOCK = new Date(PAGE_DATE.year, PAGE_DATE.month - 1, PAGE_DATE.day, 0, 0, 0);
+
+    function isUnlocked() { return new Date() >= UNLOCK; }
+
+    function countdown() {
+      const diff = UNLOCK - new Date();
+      if (diff <= 0) return null;
+      return {
+        h: Math.floor(diff / 36e5),
+        m: Math.floor((diff % 36e5) / 6e4),
+        s: Math.floor((diff % 6e4) / 1e3)
+      };
+    }
+
+    function buildNav() {
+      const nav = document.getElementById('siteNav');
+      const pages = [
+        { href:'index.html', label:'Home', date:null },
+        { href:'may8.html', label:'May 8', date:{ year:2026,month:5,day:8 } },
+        { href:'may9.html', label:'May 9', date:{ year:2026,month:5,day:9 } },
+        { href:'may10.html', label:'May 10', date:{ year:2026,month:5,day:10 } }
+      ];
+      pages.forEach(p => {
+        const a = document.createElement('a');
+        a.href = p.href;
+        a.textContent = p.label;
+        if (p.date) {
+          const ul = new Date(p.date.year, p.date.month-1, p.date.day);
+          if (new Date() < ul) a.classList.add('locked');
+        }
+        if (window.location.pathname.endsWith('may9.html')) {
+          if (p.href === 'may9.html') a.classList.add('active');
+        }
+        nav.appendChild(a);
+      });
+    }
+
+    buildNav();
+
+    const content = document.getElementById('pageContent');
+
+    if (!isUnlocked()) {
+      content.innerHTML = `
+        <div class="locked-page">
+          <a href="index.html" style="text-decoration:none;color:var(--muted);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:2rem;display:block;">← Back Home</a>
+          <div class="lock-icon">🔒</div>
+          <h2>Almost Time…</h2>
+          <p class="script" style="font-style:italic;font-size:1.1rem;">This page opens at midnight on May 9th.<br>Worth the wait, I promise.</p>
+          <div class="countdown">
+            <div class="countdown-block"><span class="num" id="cdH">--</span><span class="label">Hours</span></div>
+            <div class="countdown-block"><span class="num" id="cdM">--</span><span class="label">Mins</span></div>
+            <div class="countdown-block"><span class="num" id="cdS">--</span><span class="label">Secs</span></div>
+          </div>
+          <a href="index.html" class="btn" style="margin-top:1rem;">Go Back Home</a>
+        </div>`;
+
+      function tick() {
+        const c = countdown();
+        if (!c) { location.reload(); return; }
+        document.getElementById('cdH').textContent = String(c.h).padStart(2,'0');
+        document.getElementById('cdM').textContent = String(c.m).padStart(2,'0');
+        document.getElementById('cdS').textContent = String(c.s).padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
+
+    } else {
+
+      content.innerHTML = `
+
+        <!-- HERO -->
+        <div class="hero mom-hero">
+          <span class="hero-tag">May 9th &nbsp;✦&nbsp; Day Two</span>
+          <h1>To the Most<br><em class="script">Incredible Mother</em></h1>
+          <div class="hero-divider"><span>✦</span></div>
+          <p class="hero-sub script">
+            "A mother is not a person to lean on, but a person to make leaning unnecessary."<br>
+            <span style="font-size:0.85em;">— Dorothy Canfield Fisher</span>
+          </p>
+        </div>
+
+        <!-- OPENING -->
+        <div class="section">
+          <span class="section-label">The Truth</span>
+          <h2>I Get To Watch You Every Day</h2>
+
+          <div class="letter-wrap">
+            <p>
+              There is something that happens when you watch someone become a mother.
+              You think you already know them — you've seen them at their best and their worst,
+              in the hard moments and the joyful ones. And then their child looks up at them,
+              and you realize: you didn't know the half of it.
+            </p>
+            <p>
+              That's what happened to me. I watched you become a mom, and I was floored.
+              Because the love you have for our children — the depth, the ferocity, the tenderness
+              of it — is unlike anything I have ever seen in my life.
+            </p>
+            <p>
+              You didn't just love them. You <em>chose</em> them, over and over, in every exhausted
+              3 a.m., in every scraped knee, in every hard conversation, in every single ordinary
+              Tuesday. You chose to show up completely, and you have never stopped.
+            </p>
+            <p>
+              That is who you are. And today, I want to try — knowing I'll fall short — to put
+              into words exactly what kind of mother you are. Because you should know.
+              You should hear it.
+            </p>
+          </div>
+        </div>
+
+        <!-- PHOTO + TEXT SPLIT -->
+        <div class="section" style="padding-top:0">
+          <div class="split-section">
+            <div class="split-photo">
+              <img src="photos/mom1.jpg" alt="You with our family" onerror="this.style.background='linear-gradient(135deg,var(--blush),var(--gold-light))'" />
+            </div>
+            <div>
+              <span class="section-label">At Your Core</span>
+              <h2 style="font-size:1.8rem;">You Love Like It's the Only Thing That Matters</h2>
+              <p>
+                Because to you, it is. Every choice you make, every sacrifice you don't even call
+                a sacrifice — it all comes from the same place: a love so complete it doesn't ask
+                for anything back.
+              </p>
+              <p>
+                Our children are going to grow up knowing, without a shadow of a doubt,
+                that they were loved. That is the greatest gift a parent can give —
+                and you give it every single day.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ORNAMENT -->
+        <div class="ornament">✦ ✦ ✦</div>
+
+        <!-- REASONS -->
+        <div class="section">
+          <span class="section-label">Let Me Count the Ways</span>
+          <h2>20 Reasons You Are the Most Incredible Mom</h2>
+          <p>I could write 200. I started with 20. Here they are — no filter, straight from my heart.</p>
+
+          <ol class="reasons-list">
+            <li>You are <strong>fully present</strong>. When you're with our kids, you're actually with them — not halfway somewhere else. They feel it, and it matters more than you know.</li>
+            <li>You <strong>remember everything</strong> that matters to them. Their favorite color this week. The friend they're nervous about. The dream they mentioned once. You hold it all.</li>
+            <li>You <strong>celebrate the small things</strong>. You treat a lost tooth like a parade and a first word like a miracle. Because to you, it is. And that wonder is contagious.</li>
+            <li>You are <strong>patient in the moments that would break anyone else</strong>. I've watched you breathe through the tantrums and the tears and the "whys" and I have been genuinely in awe.</li>
+            <li>You <strong>apologize when you're wrong</strong> — even to the kids. You teach them that love means accountability, and that even moms are human. That's a gift they'll carry forever.</li>
+            <li>You <strong>advocate ferociously</strong> for our children. You will walk into any room, face any person, fight any fight to make sure they are seen, heard, and protected.</li>
+            <li>You <strong>teach by example</strong>. Every lesson you want them to learn, you live. Kindness. Work ethic. Respect. Courage. They watch you. They learn from you. Always.</li>
+            <li>You <strong>read the room</strong>. You know when someone needs a hug vs. some space vs. a distraction. You have an emotional intelligence that is extraordinary and our kids benefit from it every day.</li>
+            <li>You <strong>make ordinary days magical</strong>. A Tuesday with you isn't just a Tuesday. It's a fort in the living room, a dance party in the kitchen, a story that goes on just a little too long because no one wants it to end.</li>
+            <li>You <strong>love them through the hard phases</strong>. The sleepless months, the difficult stages, the moments they push back — you don't love them less. You lean in harder. Every time.</li>
+            <li>You <strong>encourage their individuality</strong>. You don't try to shape them into what you want — you create the space for them to discover who they are, and you celebrate exactly that person.</li>
+            <li>You <strong>balance fun and structure</strong> in a way that takes real wisdom. They know they're safe. They also know life is joyful. That combination is rare and intentional.</li>
+            <li>You <strong>take care of yourself so you can take care of them</strong>. You understand that you matter too. That modeling self-respect and self-care is one of the most important things you can teach.</li>
+            <li>You <strong>make them feel safe to be scared</strong>. They come to you with the things that frighten them. That doesn't happen by accident — it happens because you've made yourself a safe place, over and over.</li>
+            <li>You <strong>never stop learning</strong> how to be better for them. You reflect, you adjust, you read, you ask. You treat motherhood like the most important work in the world — because to you, it is.</li>
+            <li>You <strong>carry the mental load</strong> without letting it swallow you. The appointments, the schedules, the worries, the what-ifs — you manage it all with a capability that leaves me speechless.</li>
+            <li>You <strong>make them feel like the most important people in the room</strong>. When you focus on them, the whole world narrows to them. They know it. I see it in their faces every time.</li>
+            <li>You are <strong>their biggest cheerleader</strong>. In the audience, on the sideline, at the kitchen table — you are there with your whole heart, celebrating them, believing in them, cheering them on.</li>
+            <li>You <strong>love their father</strong> in a way that shows them what love should look like. The way we treat each other is the blueprint they'll carry into their own lives. Thank you for that.</li>
+            <li>You <strong>will never fully understand the impact you're having</strong>. The confidence, the security, the sense of self our children are growing — that is your doing. That is your legacy. And it is breathtaking.</li>
+          </ol>
+        </div>
+
+        <!-- BIG QUOTE -->
+        <div class="big-mom-quote section" style="padding-top:0">
+          <blockquote>
+            "The most important thing a father can do for his children<br>
+            is love their mother."
+          </blockquote>
+          <cite>— Theodore Hesburgh</cite>
+          <p style="margin-top:1.5rem;font-size:0.95rem;color:var(--charcoal);">
+            I love their mother so much. With everything I have.
+          </p>
+        </div>
+
+        <!-- MOM MOMENTS -->
+        <div class="section">
+          <span class="section-label">The Moments I Won't Forget</span>
+          <h2>Scenes I Carry With Me</h2>
+          <p>There are images burned into my heart. Here are a few.</p>
+
+          <div class="mom-moment">
+            <span class="mm-tag">The Middle of the Night</span>
+            <h4>When the rest of the world was asleep</h4>
+            <p>The nights when everything was hard and uncertain, and you were still there — tired beyond words but not going anywhere. Rocking. Soothing. Staying. That is a kind of love I want our children to understand when they're old enough.</p>
+          </div>
+
+          <div class="mom-moment">
+            <span class="mm-tag">The Ordinary Mornings</span>
+            <h4>You make the routine feel like a gift</h4>
+            <p>Breakfast made with care. Lunch packed with a tiny note inside. Shoes found, bags checked, everything handled — and all of it done with a love so steady it doesn't need to announce itself. Our kids will realize someday how rare that is.</p>
+          </div>
+
+          <div class="mom-moment">
+            <span class="mm-tag">The Hard Conversations</span>
+            <h4>When they came to you with the big stuff</h4>
+            <p>You sat down, you listened — really listened — and you gave them exactly what they needed. Not a lecture. Not panic. Just presence, and wisdom, and a love that made them feel like everything was going to be okay. Because with you in their corner, it is.</p>
+          </div>
+
+          <div class="mom-moment">
+            <span class="mm-tag">The Pure Joy</span>
+            <h4>When you laugh with them</h4>
+            <p>The real laugh — the unguarded, full-body laugh when they catch you off guard with something ridiculous. Those moments are everything. That is the sound of a home full of joy, and you are the reason for it.</p>
+          </div>
+        </div>
+
+        <!-- PHOTO ROW -->
+        <div class="section" style="padding-top:0">
+          <div class="photo-grid cols-2">
+            <div class="photo-slot wide">
+              <img src="photos/mom2.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot wide">
+              <img src="photos/mom3.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+          <div class="photo-grid cols-3" style="margin-top:1rem;">
+            <div class="photo-slot">
+              <img src="photos/mom4.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot">
+              <img src="photos/mom5.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot">
+              <img src="photos/mom6.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+
+        <!-- TO THE KIDS CALLOUT -->
+        <div class="section" style="padding-top:0">
+          <div class="to-the-kids">
+            <span class="crown-icon">👑</span>
+            <h3>A Note to Our Kids, for When They're Old Enough to Read This</h3>
+            <p>
+              You have the best mom in the world. Not because she's perfect —
+              she'll be the first to tell you she's not — but because she is <em>real</em>,
+              and she is present, and she loves you in a way that will anchor you
+              your entire lives.
+            </p>
+            <p>
+              When life gets hard, and it will, remember that she was there for all of it.
+              Remember the way she looked at you. Remember the way she showed up.
+              And when you have your own family someday, remember what it looked like
+              to love someone the way your mom loved you.
+            </p>
+            <p style="margin-top:1.5rem;font-style:italic;color:rgba(255,255,255,0.75);">
+              — From your dad, who is so proud of all of you
+            </p>
+          </div>
+        </div>
+
+        <!-- CLOSING LETTER -->
+        <div class="section">
+          <span class="section-label">From Me To You</span>
+          <h2>What Our Kids Don't Know Yet</h2>
+          <div class="letter-wrap">
+            <p>
+              They don't know yet how lucky they are. They will. When they're older and they see
+              the world and they meet other families and they understand that what we have —
+              what you have built — is not the norm. It's extraordinary.
+            </p>
+            <p>
+              They don't know the version of motherhood that involves sacrifice without resentment,
+              love without condition, and patience without end. When they find it in you,
+              they'll spend the rest of their lives trying to understand how you did it.
+            </p>
+            <p>
+              I know how you do it. You do it because it's them. You do it because every hard thing
+              is worth it when you see who they're becoming. You do it because you are, at your core,
+              the kind of person who shows up completely — and that is who they get to call Mom.
+            </p>
+            <p>
+              I love watching you love them. It is one of the greatest privileges of my life.
+            </p>
+            <p style="margin-top:2rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--deep-rose);">
+              Happy almost Mother's Day, my love.<br>
+              One more day. One more surprise.<br>
+              Your Husband
+            </p>
+          </div>
+        </div>
+
+        <!-- NAV FOOTER -->
+        <div class="nav-footer">
+          <a href="may8.html" class="btn" style="background:white;color:var(--deep-rose);border:1.5px solid var(--rose);box-shadow:none;">← May 8</a>
+          <a href="may10.html" class="btn" id="nextBtn">Mother's Day →</a>
+        </div>
+
+        <div class="page-footer">Made with love, for the best mom our children could ever have. ✦</div>
+      `;
+
+      const may10Unlock = new Date(2026, 4, 10, 0, 0, 0);
+      if (new Date() < may10Unlock) {
+        const nb = document.getElementById('nextBtn');
+        nb.style.opacity = '0.4';
+        nb.style.pointerEvents = 'none';
+        nb.textContent = "Mother's Day (unlocks tomorrow)";
+      }
+    }
+
+    // ── Petals
+    const PETALS = ['🌸','🌺','✿','❀','🌹','🌷'];
+    const pc = document.getElementById('petals');
+    for (let i = 0; i < 14; i++) {
+      const el = document.createElement('span');
+      el.className = 'petal-particle';
+      el.textContent = PETALS[Math.floor(Math.random() * PETALS.length)];
+      el.style.cssText = `left:${Math.random()*100}%;bottom:-2rem;font-size:${0.6+Math.random()*0.8}rem;animation-duration:${12+Math.random()*16}s;animation-delay:-${Math.random()*20}s;`;
+      pc.appendChild(el);
+    }
+  </script>
+</body>
+</html>

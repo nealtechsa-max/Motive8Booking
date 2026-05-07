@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Mother's Day — May 10</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gift-hero {
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(201, 166, 110, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(245, 214, 220, 0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(201, 123, 138, 0.1) 0%, transparent 50%);
+    }
+
+    .gift-hero h1 { font-size: clamp(2.6rem, 8vw, 6rem); }
+    .gift-hero h1 em { display: block; font-size: 0.7em; color: var(--gold); }
+
+    /* Confetti burst animation */
+    @keyframes confettiFall {
+      0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      z-index: 200;
+      animation: confettiFall linear forwards;
+    }
+
+    .final-letter {
+      background: linear-gradient(145deg, white 0%, var(--cream) 100%);
+      border-radius: 1.5rem;
+      padding: 3.5rem;
+      box-shadow: 0 8px 40px var(--shadow);
+      border: 1px solid var(--gold-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-letter::after {
+      content: '✦';
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-size: 5rem;
+      color: var(--blush);
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .final-letter p {
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: var(--charcoal);
+      margin-bottom: 1.4rem;
+    }
+
+    .gift-reveal-section {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .gift-big-box {
+      background: white;
+      border: 2px solid var(--gold);
+      border-radius: 2rem;
+      padding: 4rem 3rem;
+      max-width: 640px;
+      margin: 0 auto;
+      box-shadow: 0 12px 50px rgba(201, 166, 110, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-big-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245, 214, 220, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .gift-big-box .ribbon-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    .gift-big-box .ribbon-cross {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    .bow-icon {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .gift-big-box h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--deep-rose);
+      margin-bottom: 0.5rem;
+    }
+
+    .gift-big-box .gift-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .gift-big-box .gift-desc {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .yoga-btn {
+      display: inline-block;
+      padding: 1.1rem 3rem;
+      background: linear-gradient(135deg, var(--gold), #B8935A);
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 3rem;
+      box-shadow: 0 8px 28px rgba(201, 166, 110, 0.45);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .yoga-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .yoga-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(201, 166, 110, 0.55);
+    }
+
+    .yoga-btn:hover::after { opacity: 0.07; }
+
+    .gift-note {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .closing-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 3px 14px var(--shadow);
+    }
+
+    .closing-card .cc-icon { font-size: 2.2rem; display: block; margin-bottom: 0.75rem; }
+    .closing-card p { font-size: 0.9rem; color: var(--charcoal); margin: 0; line-height: 1.65; }
+
+    .final-message {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .final-message h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--deep-rose);
+      margin-bottom: 1rem;
+    }
+
+    .final-message p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--deep-rose);
+      margin-top: 2rem;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 0.75rem;
+      margin: 3rem 0;
+    }
+
+    .photo-strip .photo-slot { border-radius: 1rem; }
+
+    @media (max-width: 600px) {
+      .final-letter { padding: 2rem 1.5rem; }
+      .gift-big-box { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" id="siteNav"></nav>
+  <div id="petals"></div>
+  <div id="confetti-container"></div>
+  <div id="pageContent"></div>
+
+  <script>
+    const PAGE_DATE = { year: 2026, month: 5, day: 10 };
+    const UNLOCK = new Date(PAGE_DATE.year, PAGE_DATE.month - 1, PAGE_DATE.day, 0, 0, 0);
+
+    function isUnlocked() { return new Date() >= UNLOCK; }
+
+    function countdown() {
+      const diff = UNLOCK - new Date();
+      if (diff <= 0) return null;
+      return {
+        h: Math.floor(diff / 36e5),
+        m: Math.floor((diff % 36e5) / 6e4),
+        s: Math.floor((diff % 6e4) / 1e3)
+      };
+    }
+
+    function buildNav() {
+      const nav = document.getElementById('siteNav');
+      const pages = [
+        { href:'index.html', label:'Home', date:null },
+        { href:'may8.html', label:'May 8', date:{ year:2026,month:5,day:8 } },
+        { href:'may9.html', label:'May 9', date:{ year:2026,month:5,day:9 } },
+        { href:'may10.html', label:'May 10', date:{ year:2026,month:5,day:10 } }
+      ];
+      pages.forEach(p => {
+        const a = document.createElement('a');
+        a.href = p.href;
+        a.textContent = p.label;
+        if (p.date) {
+          const ul = new Date(p.date.year, p.date.month-1, p.date.day);
+          if (new Date() < ul) a.classList.add('locked');
+        }
+        if (window.location.pathname.endsWith('may10.html')) {
+          if (p.href === 'may10.html') a.classList.add('active');
+        }
+        nav.appendChild(a);
+      });
+    }
+
+    buildNav();
+
+    const content = document.getElementById('pageContent');
+
+    if (!isUnlocked()) {
+      content.innerHTML = `
+        <div class="locked-page">
+          <a href="index.html" style="text-decoration:none;color:var(--muted);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:2rem;display:block;">← Back Home</a>
+          <div class="lock-icon">🎁</div>
+          <h2>Your Gift Is Waiting…</h2>
+          <p class="script" style="font-style:italic;font-size:1.1rem;">This opens at midnight on Mother's Day.<br>You deserve the anticipation.</p>
+          <div class="countdown">
+            <div class="countdown-block"><span class="num" id="cdH">--</span><span class="label">Hours</span></div>
+            <div class="countdown-block"><span class="num" id="cdM">--</span><span class="label">Mins</span></div>
+            <div class="countdown-block"><span class="num" id="cdS">--</span><span class="label">Secs</span></div>
+          </div>
+          <a href="index.html" class="btn" style="margin-top:1rem;">Go Back Home</a>
+        </div>`;
+
+      function tick() {
+        const c = countdown();
+        if (!c) { location.reload(); return; }
+        document.getElementById('cdH').textContent = String(c.h).padStart(2,'0');
+        document.getElementById('cdM').textContent = String(c.m).padStart(2,'0');
+        document.getElementById('cdS').textContent = String(c.s).padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
+
+    } else {
+
+      // Confetti burst on load
+      setTimeout(launchConfetti, 600);
+
+      content.innerHTML = `
+
+        <!-- HERO -->
+        <div class="hero gift-hero">
+          <span class="hero-tag">Mother's Day &nbsp;✦&nbsp; May 10th</span>
+          <h1>Happy<em class="script">Mother's Day</em></h1>
+          <div class="hero-divider"><span>✦</span></div>
+          <p class="hero-sub script">
+            Three days. Three letters. One lifetime of gratitude.<br>
+            And now — your gift.
+          </p>
+        </div>
+
+        <!-- OPENING -->
+        <div class="section">
+          <span class="section-label">The Last Letter</span>
+          <h2>You Made It to Day Three</h2>
+
+          <div class="final-letter">
+            <p>
+              My love. It's Mother's Day. And before we get to the gift — before the fun part —
+              I need you to sit with this for just a moment.
+            </p>
+            <p>
+              Three days ago, I tried to tell you what it means to be loved by you as a wife.
+              Yesterday, I tried to tell you what it looks like to watch you be a mother.
+              Today is the day we get to celebrate you. All of you.
+            </p>
+            <p>
+              I know that being a mom is relentless. I know there are days when it asks everything
+              of you and doesn't seem to give much back. I know that the work of loving and raising
+              children is largely invisible — it doesn't come with a salary or a performance review
+              or anyone telling you what a spectacular job you're doing.
+            </p>
+            <p>
+              So let me be that today. Let me say it clearly, out loud, so you can hear it and
+              let it in: you are doing a spectacular job. An extraordinary job. A job that will
+              ripple through our family for generations.
+            </p>
+            <p>
+              You deserve to be celebrated. You deserve a day that is yours. You deserve something
+              that is <em>just for you</em> — something that honors not what you do for everyone else,
+              but who you are.
+            </p>
+            <p>
+              So here is your gift. Something you can design. Something uniquely, completely,
+              entirely yours. Because you are uniquely, completely, entirely irreplaceable.
+            </p>
+          </div>
+        </div>
+
+        <!-- PHOTO COLLAGE -->
+        <div class="section" style="padding-top:0">
+          <div class="photo-strip">
+            <div class="photo-slot">
+              <img src="photos/gift1.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot square">
+              <img src="photos/gift2.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot">
+              <img src="photos/gift3.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+
+        <!-- THE GIFT -->
+        <div class="ornament">✦ Your Gift ✦</div>
+
+        <div class="gift-reveal-section">
+          <div class="gift-big-box">
+            <div class="ribbon-top"></div>
+            <div class="ribbon-cross"></div>
+            <span class="bow-icon">🎀</span>
+            <h2>Design Your Own Yoga Mat</h2>
+            <p class="gift-tagline">Custom-made. One of a kind. Just like you.</p>
+            <p class="gift-desc">
+              You work hard. You give everything to everyone.
+              This is something made just for <em>you</em> — a yoga mat designed by your hands,
+              your style, your vision. Liforme lets you customize every detail to create
+              something as unique as the woman who'll use it.
+            </p>
+            <p class="gift-desc" style="margin-top:-0.5rem;">
+              Pick your colors. Make it yours. It's waiting.
+            </p>
+            <a href="https://liforme.com/products/liforme-x-you-your-unique-yoga-mat"
+               target="_blank"
+               rel="noopener"
+               class="yoga-btn">
+              ✦ &nbsp; Design Your Mat &nbsp; ✦
+            </a>
+            <p class="gift-note">Opens in a new tab &nbsp;·&nbsp; Liforme × You</p>
+          </div>
+        </div>
+
+        <!-- WHY THIS GIFT -->
+        <div class="section">
+          <span class="section-label">Why This</span>
+          <h2>Because You Deserve Space That's Yours</h2>
+          <p>
+            I chose this because you deserve something that is yours, designed by you, made
+            for your practice, your body, your intentions. You pour so much of yourself into
+            everyone else's world — your mat is your space. Your retreat. Your few quiet minutes
+            that belong entirely to you.
+          </p>
+          <p>
+            I wanted to give you something that says: take up space. Be in your body.
+            Honor the work you do to stay grounded and strong. You deserve a mat as beautiful
+            and intentional as you are.
+          </p>
+
+          <div class="closing-grid">
+            <div class="closing-card">
+              <span class="cc-icon">🧘</span>
+              <p>A mat made for your practice — your alignment, your flow, your ritual.</p>
+            </div>
+            <div class="closing-card">
+              <span class="cc-icon">🎨</span>
+              <p>Fully customizable — your colors, your style, completely designed by you.</p>
+            </div>
+            <div class="closing-card">
+              <span class="cc-icon">💫</span>
+              <p>Something that is just yours. No sharing required. You've earned it.</p>
+            </div>
+          </div>
+
+          <div style="text-align:center;margin-top:2rem;">
+            <a href="https://liforme.com/products/liforme-x-you-your-unique-yoga-mat"
+               target="_blank"
+               rel="noopener"
+               class="btn btn-gold">
+              Design Your Mat →
+            </a>
+          </div>
+        </div>
+
+        <!-- ORNAMENT -->
+        <div class="ornament">✦ ✦ ✦</div>
+
+        <!-- FINAL MESSAGE -->
+        <div class="final-message">
+          <h2>Happy Mother's Day, My Love</h2>
+          <p>
+            Thank you for three extraordinary days of letting me try — and fail — to
+            capture in words what you mean to me. The truth is, no website, no letter,
+            no gift will ever be enough.
+          </p>
+          <p>
+            But I will keep trying. I will try every day, in every ordinary moment,
+            to make sure you know how loved you are. How seen. How celebrated.
+          </p>
+          <p>
+            You are the best thing that has ever happened to our family.
+            You are the reason our children will grow up knowing what love looks like.
+            You are my partner, my best friend, and the great love of my life.
+          </p>
+          <p>
+            Happy Mother's Day. Go design your mat.
+            Then come back here so I can hold you for a while.
+          </p>
+          <p class="signature">
+            Yours completely,<br>
+            Your Husband
+          </p>
+        </div>
+
+        <!-- FINAL PHOTO -->
+        <div class="section" style="padding-top:0">
+          <div class="photo-grid cols-2">
+            <div class="photo-slot wide">
+              <img src="photos/final1.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+            <div class="photo-slot wide">
+              <img src="photos/final2.jpg" alt="" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+
+        <div class="page-footer">
+          Happy Mother's Day &nbsp;✦&nbsp; With all the love in the world
+        </div>
+      `;
+    }
+
+    // ── Confetti
+    function launchConfetti() {
+      const colors = ['#C97B8A','#C9A66E','#F5D6DC','#8E3A4A','#E8D5B0','#ffffff'];
+      const container = document.getElementById('confetti-container');
+      for (let i = 0; i < 80; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const left = Math.random() * 100;
+        const delay = Math.random() * 2;
+        const dur = 2 + Math.random() * 3;
+        const size = 6 + Math.random() * 10;
+        const shape = Math.random() > 0.5 ? '50%' : '0';
+        el.style.cssText = `
+          left:${left}vw;
+          top:-20px;
+          width:${size}px;
+          height:${size}px;
+          background:${color};
+          border-radius:${shape};
+          animation-duration:${dur}s;
+          animation-delay:${delay}s;
+        `;
+        container.appendChild(el);
+        setTimeout(() => el.remove(), (dur + delay + 0.5) * 1000);
+      }
+    }
+
+    // ── Petals
+    const PETALS = ['🌸','🌺','✿','❀','🌹','🌷'];
+    const pc = document.getElementById('petals');
+    for (let i = 0; i < 16; i++) {
+      const el = document.createElement('span');
+      el.className = 'petal-particle';
+      el.textContent = PETALS[Math.floor(Math.random() * PETALS.length)];
+      el.style.cssText = `left:${Math.random()*100}%;bottom:-2rem;font-size:${0.6+Math.random()*0.8}rem;animation-duration:${12+Math.random()*16}s;animation-delay:-${Math.random()*20}s;`;
+      pc.appendChild(el);
+    }
+  </script>
+</body>
+</html>

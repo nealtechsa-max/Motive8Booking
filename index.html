@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Gift That Unfolds — For You, My Love</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .index-hero {
+      min-height: 60vh;
+      padding-top: 5rem;
+    }
+    .index-hero h1 { font-size: clamp(2rem, 6vw, 4.5rem); }
+    .hub-intro {
+      text-align: center;
+      padding: 0 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .hub-intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating petals -->
+  <div id="petals"></div>
+
+  <main>
+    <div class="hero index-hero">
+      <span class="hero-tag">A Gift Just For You</span>
+      <h1>For the Woman<br><em>Who is My Everything</em></h1>
+      <div class="hero-divider"><span>✦</span></div>
+      <p class="hero-sub script">
+        Three days. Three love letters. One for the woman you are,<br>
+        one for the mother you've become, and one small token<br>
+        of all the gratitude I can't fit into words.
+      </p>
+    </div>
+
+    <div class="hub-intro">
+      <p>Each page unlocks at midnight on its day — a little something to look forward to.</p>
+    </div>
+
+    <div class="hub-cards" id="hubCards">
+      <!-- Cards are rendered by JS below -->
+    </div>
+
+    <div class="page-footer">
+      Made with love &nbsp;✦&nbsp; For you, always
+    </div>
+  </main>
+
+  <script>
+    const pages = [
+      {
+        date: { year: 2026, month: 5, day: 8 },
+        label: 'May 8',
+        icon: '💍',
+        title: 'My Wife',
+        desc: 'A love letter to the most extraordinary woman I have ever known.',
+        href: 'may8.html'
+      },
+      {
+        date: { year: 2026, month: 5, day: 9 },
+        label: 'May 9',
+        icon: '🌸',
+        title: 'My Partner in This Beautiful Chaos',
+        desc: 'A celebration of the incredible mother you are every single day.',
+        href: 'may9.html'
+      },
+      {
+        date: { year: 2026, month: 5, day: 10 },
+        label: "May 10 · Mother's Day",
+        icon: '🎁',
+        title: 'Your Gift',
+        desc: 'Something just for you — designed by you, made for you.',
+        href: 'may10.html'
+      }
+    ];
+
+    function isAvailable(d) {
+      const now = new Date();
+      const unlock = new Date(d.year, d.month - 1, d.day, 0, 0, 0);
+      return now >= unlock;
+    }
+
+    function buildCards() {
+      const container = document.getElementById('hubCards');
+      container.innerHTML = '';
+      pages.forEach(p => {
+        const avail = isAvailable(p.date);
+        const card = document.createElement(avail ? 'a' : 'div');
+        if (avail) { card.href = p.href; }
+        card.className = 'hub-card ' + (avail ? 'available' : 'locked-card');
+        card.innerHTML = `
+          <span class="card-date">${p.label}</span>
+          <span class="card-icon">${p.icon}</span>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+          <span class="status-badge">${avail ? 'Open Now ✦' : '🔒 Coming Soon'}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    buildCards();
+
+    // ── Floating petals
+    const PETALS = ['🌸','🌺','✿','❀','🌹','🌷'];
+    const container = document.getElementById('petals');
+    for (let i = 0; i < 14; i++) {
+      const el = document.createElement('span');
+      el.className = 'petal-particle';
+      el.textContent = PETALS[Math.floor(Math.random() * PETALS.length)];
+      const left = Math.random() * 100;
+      const dur  = 12 + Math.random() * 16;
+      const delay = Math.random() * 20;
+      const size = 0.6 + Math.random() * 0.8;
+      el.style.cssText = `left:${left}%;bottom:-2rem;font-size:${size}rem;animation-duration:${dur}s;animation-delay:-${delay}s;`;
+      container.appendChild(el);
+    }
+  </script>
+</body>
+</html>
