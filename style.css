@@ -213,7 +213,7 @@ h1, h2, h3 {
 .photo-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 
 .photo-slot {
-  aspect-ratio: 4/3;
+  aspect-ratio: 1/1;
   border-radius: 0.75rem;
   overflow: hidden;
   background: linear-gradient(135deg, var(--blush) 0%, var(--gold-light) 100%);
@@ -224,7 +224,7 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center center;
   display: block;
   transition: transform 0.5s ease;
 }
